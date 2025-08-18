@@ -1,6 +1,6 @@
 # References:
 #   https://github.com/mdouchement/docker-zoom-us
-FROM --platform=linux/arm64 pureos/amber
+FROM pureos/amber
 LABEL maintainer="slithy"
 
 ENV DEBIAN_FRONTEND=noninteractive
