@@ -1,6 +1,6 @@
 # References:
 #   https://github.com/mdouchement/docker-zoom-us
-FROM debian:bookworm
+FROM pureos/amber
 LABEL maintainer="slithy"
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -8,15 +8,16 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Refresh package lists
 RUN apt-get update
 RUN apt-get -qy dist-upgrade
-RUN apt-get install -qy software-properties-common wget gnupg2 libcanberra-gtk-module libcanberra-gtk3-module pulseaudio epiphany-browser
+RUN apt-get install -qy software-properties-common curl libcanberra-gtk-module libcanberra-gtk3-module pulseaudio epiphany-browser
 
 # Add MS Teams repo
-RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
-RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
-RUN apt-get update
+#RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
+#RUN apt-add-repository 'deb https://packages.microsoft.com/repos/ms-teams stable main'
+#RUN apt-get update
 
 # Install teams
-RUN apt-get install -qy teams
+RUN curl -L -o teams.deb https://go.microsoft.com/fwlink/p/?linkid=2187217
+RUN apt-get install -y ./teams.deb
 
 # Copy scripts
 COPY scripts/ /var/cache/ms-teams/
