@@ -1,6 +1,6 @@
 # References:
 #   https://github.com/mdouchement/docker-zoom-us
-FROM pureos/amber
+FROM pureos/amber:latest@arm64
 LABEL maintainer="slithy"
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -11,7 +11,7 @@ RUN apt -qy full-upgrade
 RUN apt install -qy software-properties-common curl libcanberra-gtk-module libcanberra-gtk3-module pulseaudio epiphany-browser
 
 # Add MS Teams repo
-RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
+RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
 RUN apt-add-repository 'deb https://packages.microsoft.com/repos/ms-teams stable main'
 RUN apt update
 
