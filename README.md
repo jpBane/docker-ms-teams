@@ -1,6 +1,9 @@
 This project is adapted from [mdouchement](https://github.com/mdouchement) [Zoom](https://github.com/mdouchement/docker-zoom-us) containerization.
 
 # slithy/docker-ms-teams
+>[!warning]
+>Microsoft released a new Teams Version and the classic Teams will no longer work after 2025-06-30 [Source](https://learn.microsoft.com/en-us/microsoftteams/teams-for-vdi).
+>Apparently, the new teams will only be available for Windows and MacOS [Source](https://learn.microsoft.com/en-us/answers/questions/1641711/is-the-new-version-of-teams-available-for-ubuntu-2). 
 
 # Introduction
 
