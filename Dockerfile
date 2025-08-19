@@ -1,6 +1,6 @@
 # References:
 #   https://github.com/mdouchement/docker-zoom-us
-FROM pureos/amber
+FROM debian:bookworm
 LABEL maintainer="slithy"
 
 ENV DEBIAN_FRONTEND=noninteractive
