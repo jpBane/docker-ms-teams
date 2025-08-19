@@ -1,5 +1,5 @@
 build: Dockerfile entrypoint.sh scripts/ms-teams-wrapper
-	docker build --platform=linux/arm64 -t slithy/ms-teams:latest .
+	docker build -t slithy/ms-teams:latest .
 
 install:
 	docker run -it --rm --volume /usr/local/bin:/target slithy/ms-teams:latest install
