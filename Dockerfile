@@ -11,8 +11,7 @@ RUN apt-get -qy dist-upgrade
 RUN apt-get install -qy software-properties-common wget gnupg2 libcanberra-gtk-module libcanberra-gtk3-module pulseaudio epiphany-browser
 
 # Add MS Teams repo
-RUN wget -qO - https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-RUN install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted/gpg.d/
+RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null
 RUN sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
 RUN apt-get update
 
